@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitante</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="panel panel-primary" align="center">
+       <div class="panel-heading">
+         <h1 class= "panel-title">Bienvenidos al Sistema de Aspirante a Docente</h1>
+       </div>
+        <p>La cantidad de docentes registrados es:{{cantidad}}</p>
+       <div>
+        <a href="nuevo_docente" class="btn btn-warning" >Agregar Docente</a>
+        <a href="reporte_docente" class="btn btn-warning" >Reporte xlsx</a>
+        <br>
+        <br>
+       </div>
+    </div>
+     <div class="table-responsive" align="center">
+        <table class="table table-bordered table-condensed text-center table-hover" style="width:80%">
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Detalle</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+                </tr>
+            </thead>
+            {% for docente in docente %}
+                <tr>
+                    <td>{{ docente.id }}</td>
+                    <td>{{ docente.apellido }}</td>
+                    <td>{{ docente.nombre }}</td>
+                    <td>{{ docente.email }}</td>
+                    <td><a href="detalle_docente/{{ docente.id }}" class="btn btn-info"/> ver detalle</td>
+                    <td><a href="modificar_docente/{{ docente.id }}" class="btn btn-success"/> Editar</td>
+                    <td><a href="eliminar_docente/{{ docente.id }}" class="btn btn-danger"/> Eliminar</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+</html>
